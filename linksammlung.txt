@@ -1,0 +1,22 @@
+Gutes Tutorial für DB2 Sachen:
+http://www.tutorialspoint.com/db2/db2_introduction.htm
+
+DB2 Isolation Levels
+http://www.tutorialspoint.com/db2/db2_introduction.htm
+http://www.ibm.com/developerworks/data/library/techarticle/dm-1107db2isolationlevel/
+
+DB2 Isolation + ANSI/ISO 92 SQL
+http://www.ibm.com/developerworks/data/zones/informix/library/techarticle/db_isolevels.html
+
+DB2 Kommandos
+http://www.db2commands.com/
+
+
+Locking
+http://www.ibm.com/developerworks/data/library/techarticle/dm-0511bond/
+
+JDBC and DB2:
+http://www-01.ibm.com/support/knowledgecenter/#!/SSEPGG_9.1.0/com.ibm.db2.udb.apdv.java.doc/doc/cjvjdbas.htm
+
+DB2PD:
+http://www-01.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0011729.html?cp=SSEPGG_10.5.0%2F3-6-2-6-95

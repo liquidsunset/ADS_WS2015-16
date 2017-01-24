@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Concurrency control mechanisms}{}% 1
+\BOOKMARK [1][-]{section.2}{Locking modes}{}% 2
+\BOOKMARK [1][-]{section.3}{Resource locking}{}% 3
+\BOOKMARK [1][-]{section.4}{Booking experiment}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Remarks}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Results}{section.4}% 6
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Execution times and booking tries}{subsection.4.2}% 7
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Resulting tables}{subsection.4.2}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Results with PreparedStatements}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Viewing locks [optional]}{}% 10

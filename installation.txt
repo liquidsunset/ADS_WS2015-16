@@ -1,0 +1,31 @@
+Da ich DB2 am Notebook noch installieren musste, schreibe ich hier
+nun die Anleitung, wie es bei mir unter Fedora 22 64Bit klappte. 
+
+download DB2 Express-C
+tar xfzv v10.5_linuxx64_expc.tar.gz
+cd expc
+
+./db2_install (als normaler User)
+Das Installskript gibt am Ende eine Anleitung aus, diese ausführen
+Ich glaube mich zu erinnern, auch Hinweise und natürlich Fehler aufgezeigt
+bekommen zu haben, allerdings nicht am Notebook.
+Bei mir für die Bash:
+. $HOME/sqllib/db2profile
+
+Erster Test:
+db2
+create database test (hing am Anfang etwas)
+Nach einiger Zeit, command completed successfully
+exit
+
+db2 create database test -> funktioniert als normaler user
+db2 activate database test -> funktioniert als normaler user
+db2 connect to test -> funktioniert als normaler user
+
+Alles paletti!
+
+db2 "create table testing1(id integer not null, PRIMARY KEY(id))"
+DB20000I  The SQL command completed successfully.
+db2 "drop table testing1"
+DB20000I  The SQL command completed successfully.
+

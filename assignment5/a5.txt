@@ -1,0 +1,147 @@
+============
+Assignment 5
+============
+
+Solve the following exercises. Unlike previous assignments, this should be done
+individually.
+
+Submit your solutions in person to Mateusz Pawlik by 12.02.2016.
+
+The solutions must be hand-written.
+
+-----------------------------------------------
+1. (1 Point) Exercise 14.19 from the text book.
+-----------------------------------------------
+
+Explain why the read-committed isolation level ensures that schedules are 
+cascade-free.
+
+The isolation level read-committed keeps the read phenomena dirty reads from occuring.
+A dirty read (aka uncommitted dependency) occurs when a transaction is allowed to read data from a row that has been modified by another transaction still running and not yet committed. (Definition taken from English Wikipedia)
+
+A cascading rollback happens if one transaction Ti causes a failure and all other transactions Tj depending on Ti are forced to roll back too.
+
+Since the read-committed isolation level does not allow for reading and writing the same row at a concurrent time (since a WRITE has to be committed before another transaction can READ that row),
+the data a transaction Tj reads will already have been written and committed by another transaction Ti.
+Thus a failure of such a transaction Ti does not lead to rollbacks of transaction Tj.
+
+------------------------------------------------
+2. (2 Points) Exercise 14.15 from the text book.
+------------------------------------------------
+
+Consider the following two transactions:
+
+T13:
+read(A)
+read(B)
+if A = 0 then B := B+1
+write(B)
+
+T14:
+read(B)
+read(A)
+if B = 0 then A := A+1
+write(A)
+
+Let the consistency requirement be A = 0 or B = 0, with A = B = 0 the initial 
+values.
+
+  (a) Show that every serial execution involving these two transactions 
+      preserves the consistency of the database.
+      Since there are 2 transactions there is a maximum of 2 possible serial executions.
+      Case "T13 executes first":
+        - Since A = 0, B := B+1 gets written
+        - At the end of T13: A = 0, B = 1
+        NOW T14 EXECUTES
+        - Since B = 1, A stays 0
+        - At the end of T14: A = 0, B = 1
+      Case "T14 executes first":
+        - Since B = 0, A = A+1 gets written
+        - At the end of T14 A = 1, B = 0
+        NOW T13 EXECUTES
+        - Since A = 1, B stays 0
+        -At the end of T13: A = 1, B = 0
+    In both cases, either A = 0 or B = 0, so the consistency requirement is fullfilled.
+      
+  (c) Is there a concurrent execution of T13 and T14 that produces a serializable
+      schedule?
+      Consider the precedence graph:
+        ________
+       |        |
+       |        v
+      T13      T14
+       ^        |
+       |________|
+      
+      Since both transactions depend on each other the precedence graph is cyclic one and thus
+      there is no conflict serializability possible.
+      For view serializability there has to be a view equivalent schedule.
+      
+      So consider the case "T13 executes first" for a serial execution.    
+    For a view equivalent schedule the T14 has to read the value written by T13 to fullfill the 2nd condition in the lecture notes.
+    However this means the reading of data B has to happen after the write of B, so the view equivalent schedule would look the same as the serial schedule
+    in this case. The other case "T14 comes first" works analog to before on data A. 
+    This means there is no explicit view equivalent schedule for T13 and T14.
+    
+    So there is no view or conflict serializability and thus no serializable schedule.
+    
+  (b) Show a concurrent execution of T13 and T14 that produces a nonserializable
+      schedule.
+      In 2) c) the nonserializability of the transactions T13 and T14 was shown. This means a serial execution of T13
+      and T14 is already a nonserializable schedule.
+      
+      Note: Interchanging the operations of T13 and T14 would not preserve the consistency, i.e.
+      T13      T14
+      Read(A)
+               Read(B)
+      Read(B)
+               Read(A)
+       ...      ...
+
+------------------------------------------------
+3. (2 Points) Exercise 15.27 from the text book.
+------------------------------------------------
+
+The multiple-granularity protocol rules specify that a transaction Ti can lock 
+a node Q in S or IS mode only if Ti currently has the parent of Q locked in 
+either IX or IS mode. Given that SIX and S locks are stronger than IX or IS 
+locks, why does the protocol not allow locking a node in S or IS mode if the 
+parent is locked in either SIX or S mode?
+
+If Ti has locked the parent node P in S or SIX mode then it means it has implicit S locks on all the descendent nodes of the parent node including Q. 
+So, there is no need for locking Q in S or IS mode and the protocol does not allow doing that.
+
+In other words:
+Since Ti has in case of the lock types SIX and S shared locks on the parent, Ti implicitly acquired shared locks on the whole subtree of parent P.
+So there is no need to further lock down descendent nodes of P with shared locks and thus the protocol does not allow for that.
+
+------------------------------------------------
+4. (2 Points) Exercise 15.31 from the text book.
+------------------------------------------------
+
+As discussed in Exercise 15.19, snapshot isolation can be implemented using a 
+form of timestamp validation. However, unlike the multiversion timestamp-ordering 
+scheme, which guarantees serializability, snapshot isolation does not guarantee
+serializability. Explain what is the key difference between the protocols that
+results in this difference.
+
+In order to support serializability an important feature is visibility or more precisely transactions have to be able to see
+what other transactions have done with the data.
+For the multiversion timestamp ordering this is the case. A data item Q always has information on when and what happened to the data.
+Readings always succeed and writes happen in a serialized manner defined by their timestamp values.
+
+With snapshot isolation however every transaction operates and oversees the values within its own snapshot of the data. Any other concurrent modification is
+invisible to any transaction. There exists some kind of race. The first transaction to commit wins that race and the values are written to
+the database. So a different schedule may will lead to different data. 
+From that follows that there is no guaranteed integrity and thus no guaranteed serializability.
+
+----------------------------------------------------------
+5. [Optional] (1 Point) Exercise 14.20 from the text book.
+----------------------------------------------------------
+
+For each of the following isolation levels, give an example of a schedule that 
+respects the specified level of isolation, but is not serializable:
+  
+  (a) Read uncommitted
+  (b) Read committed
+  (c) Repeatable read

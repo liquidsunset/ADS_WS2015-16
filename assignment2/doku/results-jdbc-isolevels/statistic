@@ -1,0 +1,48 @@
+one-transaction:::nrOfThreads: 1, runtime: 200980, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 1, runtime: 200969, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 1, runtime: 200910, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 1, runtime: 200931, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 2, runtime: 100543, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 2, runtime: 100542, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 2, runtime: 1196905, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.5 avg, 1 min, 101 max
+splitted:::nrOfThreads: 2, runtime: 100582, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 4, runtime: 50220, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 4, runtime: 50221, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 4, runtime: 1697625, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 2.5 avg, 1 min, 151 max
+splitted:::nrOfThreads: 4, runtime: 50237, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 6, runtime: 35151, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 6, runtime: 35173, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 6, runtime: 1868219, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 3.525 avg, 1 min, 168 max
+splitted:::nrOfThreads: 6, runtime: 35190, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 8, runtime: 26722, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 8, runtime: 25244, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 8, runtime: 1948641, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 4.5 avg, 1 min, 176 max
+splitted:::nrOfThreads: 8, runtime: 25232, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 10, runtime: 20215, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+splitted:::nrOfThreads: 10, runtime: 20189, isolation level: READ_COMMITED, db2 name: CS
+	Booking times: 1.0 avg, 1 min, 1 max
+one-transaction:::nrOfThreads: 10, runtime: 1998177, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 5.5 avg, 1 min, 181 max
+splitted:::nrOfThreads: 10, runtime: 20245, isolation level: SERIALIZABLE, db2 name: RR
+	Booking times: 1.0 avg, 1 min, 1 max
